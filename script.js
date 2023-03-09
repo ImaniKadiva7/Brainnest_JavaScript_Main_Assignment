@@ -311,14 +311,17 @@ function game()
         {
             if(playerPoints > computerPoints)
             {
+                alert('Game Over: You have won the game - Reload this page to restart the game');
                 return 'Game Over: You have won the game';
             }
             else if(computerPoints > playerPoints)
             {
+                alert('Game Over: You have lost the game - Reload this page to restart the game');
                 return 'Game Over: You have lost the game';
             }
             else
             {
+                alert('Game Over: It\'s a Tie - Reload this page to restart the game');
                 return 'Game Over: It\'s a Tie';
             }
         }
