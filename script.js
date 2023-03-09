@@ -13,38 +13,34 @@ function playRound(playerSelection, computerSelection)
     let playerWinsMessage = `You win, ${playerSelection} beats ${computerSelection} `;
     let playerLoseMessage = `You loose, ${computerSelection} beats ${playerSelection} `;
     let gameTieMessage = 'Its a tie please play again in this round';
-    let gamelock = false; // game lock is on
-    lock = true; // game lock is off
-    if(lock == true)
+    
+    if( playerSelection == "paper" && computerSelection == "scissors" )
     {
-        if( playerSelection == "paper" && computerSelection == "scissors" )
-        {
-            return playerLoseMessage;
-        }
-        else if( playerSelection == "rock" && computerSelection == "scissors" )
-        {
-            return playerWinsMessage;
-        }
-        else if(playerSelection == "rock" && computerSelection == "paper" )
-        {
-            return playerLoseMessage;
-        }
-        else if(playerSelection == "scissors" && computerSelection == "paper" )
-        {
-            return playerLoseMessage;
-        }
-        else if(playerSelection == "paper" && computerSelection == "rock" )
-        {
-            return playerWinsMessage;
-        } 
-        else if(playerSelection == "scissors" && computerSelection == "rock" )
-        {
-            return playerLoseMessage;
-        }
-        else
-        {
-            return gameTieMessage;
-        }
+        return playerLoseMessage;
+    }
+    else if( playerSelection == "rock" && computerSelection == "scissors" )
+    {
+        return playerWinsMessage;
+    }
+    else if(playerSelection == "rock" && computerSelection == "paper" )
+    {
+        return playerLoseMessage;
+    }
+    else if(playerSelection == "scissors" && computerSelection == "paper" )
+    {
+        return playerLoseMessage;
+    }
+    else if(playerSelection == "paper" && computerSelection == "rock" )
+    {
+        return playerWinsMessage;
+    } 
+    else if(playerSelection == "scissors" && computerSelection == "rock" )
+    {
+        return playerLoseMessage;
+    }
+    else
+    {
+        return gameTieMessage;
     }
     
 }
@@ -62,156 +58,268 @@ function game()
         fourthRound = 3,
         lastRound = 4;
 
+    let on = 0,
+        off = 2;
+
     for(let state = 0; state < 5;)
     {
         
         switch(state)
         {
             case firstRound:
-                playerSelection = window.prompt("This is a rock, paper, scissors game");
+                playerSelection = window.prompt("This is a rock, paper, scissors game - Round 1");
                 playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerPlay();
-                let gameResultsRoundOne = playRound(playerSelection, computerSelection);
-                let playerWinsMessageR1 = `You win, ${playerSelection} beats ${computerSelection} `;
-                let playerLoseMessageR1 = `You loose, ${computerSelection} beats ${playerSelection} `;
-                console.log(`first round results ${gameResultsRoundOne} at round ${state}`);
-                
-                if(gameResultsRoundOne == playerLoseMessageR1)
+
+                let gameLockFirstRound = 1;
+                if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
-                    computerPoints += 1;
-                    console.log(`computerPoints are ${computerPoints}`);
-                    state = secondRound;
-                }
-                else if(gameResultsRoundOne == playerWinsMessageR1)
-                {
-                    playerPoints += 1;
-                    console.log(`playerPoints are ${playerPoints}`);
-                    state = secondRound;
+                    gameLockFirstRound += 1;
+                    console.log(`game lock value ${gameLockFirstRound}`);
                 }
                 else
                 {
+                    gameLockFirstRound -= 1;
+                    console.log(`game lock value ${gameLockFirstRound}`);
+                }
+
+                if(gameLockFirstRound == off)
+                {
+                    computerSelection = computerPlay();
+                    console.log(`computer has selected ${computerSelection}`);
+                    let gameResultsRoundOne = playRound(playerSelection, computerSelection);
+                    let playerWinsMessageR1 = `You win, ${playerSelection} beats ${computerSelection} `;
+                    let playerLoseMessageR1 = `You loose, ${computerSelection} beats ${playerSelection} `;
+                    console.log(`first round results ${gameResultsRoundOne} at round ${state}`);
+                    if(gameResultsRoundOne == playerLoseMessageR1)
+                    {
+                        computerPoints += 1;
+                        console.log(`computerPoints are ${computerPoints}`);
+                        state = secondRound;
+                    }
+                    else if(gameResultsRoundOne == playerWinsMessageR1)
+                    {
+                        playerPoints += 1;
+                        console.log(`playerPoints are ${playerPoints}`);
+                        state = secondRound;
+                    }
+                    else
+                    {
+                        state = firstRound;
+                    }
+                }
+                else if(gameLockFirstRound == on)
+                {
+                    alert('Wrong Input, Please try again');
                     state = firstRound;
                 }
                 break;
 
             case secondRound:
-                playerSelection = window.prompt("This is a rock, paper, scissors game");
+                playerSelection = window.prompt("This is a rock, paper, scissors game - Round 2");
                 playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerPlay();
-                let gameResultsRoundTwo = playRound(playerSelection, computerSelection);
-                let playerWinsMessageR2 = `You win, ${playerSelection} beats ${computerSelection} `;
-                let playerLoseMessageR2 = `You loose, ${computerSelection} beats ${playerSelection} `;
-                console.log(`second round results ${gameResultsRoundTwo} at round ${state}`);
-
-                if(gameResultsRoundTwo == playerLoseMessageR2)
+                
+                let gameLockSecondRound = 1;
+                if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
-                    computerPoints += 1;
-                    console.log(`computerPoints are ${computerPoints}`);
-                    state = thirdRound;
-                }
-                else if(gameResultsRoundTwo == playerWinsMessageR2)
-                {
-                    playerPoints += 1;
-                    console.log(`playerPoints are ${playerPoints}`);
-                    state = thirdRound;
+                    gameLockSecondRound += 1;
+                    console.log(`game lock value ${gameLockSecondRound}`);
                 }
                 else
                 {
-                    state = secondRound;
+                    gameLockSecondRound -= 1;
+                    console.log(`game lock value ${gameLockSecondRound}`);
                 }
+
+                if(gameLockSecondRound == off)
+                {
+                    computerSelection = computerPlay();
+                    console.log(`computer has selected ${computerSelection}`);
+                    let gameResultsRoundTwo = playRound(playerSelection, computerSelection);
+                    let playerWinsMessageR2 = `You win, ${playerSelection} beats ${computerSelection} `;
+                    let playerLoseMessageR2 = `You loose, ${computerSelection} beats ${playerSelection} `;
+                    console.log(`second round results ${gameResultsRoundTwo} at round ${state}`);
+
+                    if(gameResultsRoundTwo == playerLoseMessageR2)
+                    {
+                        computerPoints += 1;
+                        console.log(`computerPoints are ${computerPoints}`);
+                        state = thirdRound;
+                    }
+                    else if(gameResultsRoundTwo == playerWinsMessageR2)
+                    {
+                        playerPoints += 1;
+                        console.log(`playerPoints are ${playerPoints}`);
+                        state = thirdRound;
+                    }
+                    else
+                    {
+                        state = secondRound;
+                    }
+                }
+                else if(gameLockSecondRound == on)
+                {
+                    alert('Wrong Input, Please try again');
+                    state = secondRound;
+                }              
                 break;
             case thirdRound:
-                playerSelection = window.prompt("This is a rock, paper, scissors game");
+                playerSelection = window.prompt("This is a rock, paper, scissors game - Round 3");
                 playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerPlay();
-                let gameResultsRoundThree = playRound(playerSelection, computerSelection);
-                let playerWinsMessageR3 = `You win, ${playerSelection} beats ${computerSelection} `;
-                let playerLoseMessageR3 = `You loose, ${computerSelection} beats ${playerSelection} `;
-                console.log(`third round results ${gameResultsRoundThree} at round ${state}`);
-
-                if(gameResultsRoundThree == playerLoseMessageR3)
+                
+                let gameLockThirdRound = 1;
+                if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
-                    computerPoints += 1;
-                    console.log(`computerPoints are ${computerPoints}`);
-                    state = fourthRound;
-                }
-                else if(gameResultsRoundThree == playerWinsMessageR3)
-                {
-                    playerPoints += 1;
-                    console.log(`playerPoints are ${playerPoints}`);
-                    state = fourthRound;
+                    gameLockThirdRound += 1;
+                    console.log(`game lock value ${gameLockThirdRound}`);
                 }
                 else
                 {
-                    state = thirdRound;
+                    gameLockThirdRound -= 1;
+                    console.log(`game lock value ${gameLockThirdRound}`);
                 }
+
+                if(gameLockThirdRound == off)
+                {
+                    computerSelection = computerPlay();
+                    console.log(`computer has selected ${computerSelection}`);
+                    let gameResultsRoundThree = playRound(playerSelection, computerSelection);
+                    let playerWinsMessageR3 = `You win, ${playerSelection} beats ${computerSelection} `;
+                    let playerLoseMessageR3 = `You loose, ${computerSelection} beats ${playerSelection} `;
+                    console.log(`third round results ${gameResultsRoundThree} at round ${state}`);
+
+                    if(gameResultsRoundThree == playerLoseMessageR3)
+                    {
+                        computerPoints += 1;
+                        console.log(`computerPoints are ${computerPoints}`);
+                        state = fourthRound;
+                    }
+                    else if(gameResultsRoundThree == playerWinsMessageR3)
+                    {
+                        playerPoints += 1;
+                        console.log(`playerPoints are ${playerPoints}`);
+                        state = fourthRound;
+                    }
+                    else
+                    {
+                        state = thirdRound;
+                    }
+                }
+                else if(gameLockThirdRound == on)
+                {
+                    alert('Wrong Input, Please try again');
+                    state = thirdRound;
+                } 
                 break;
             case fourthRound:
-                playerSelection = window.prompt("This is a rock, paper, scissors game");
+                playerSelection = window.prompt("This is a rock, paper, scissors game - Round 4");
                 playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerPlay();
-                let gameResultsRoundFour = playRound(playerSelection, computerSelection);
-                let playerWinsMessageR4 = `You win, ${playerSelection} beats ${computerSelection} `;
-                let playerLoseMessageR4 = `You loose, ${computerSelection} beats ${playerSelection} `;
-                console.log(`fourth round results ${gameResultsRoundFour} at round ${state}`);
-
-                if(gameResultsRoundFour == playerLoseMessageR4)
+                
+                let gameLockFourthRound = 1;
+                if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
-                    computerPoints += 1;
-                    console.log(`computerPoints are ${computerPoints}`);
-                    state = lastRound;
-                }
-                else if(gameResultsRoundFour == playerWinsMessageR4)
-                {
-                    playerPoints += 1;
-                    console.log(`playerPoints are ${playerPoints}`);
-                    state = lastRound;
+                    gameLockFourthRound += 1;
+                    console.log(`game lock value ${gameLockFourthRound}`);
                 }
                 else
                 {
-                    state = fourthRound;
+                    gameLockFourthRound -= 1;
+                    console.log(`game lock value ${gameLockFourthRound}`);
                 }
+
+                if(gameLockFourthRound == off)
+                {
+                    computerSelection = computerPlay();
+                    console.log(`computer has selected ${computerSelection}`);
+                    let gameResultsRoundFour = playRound(playerSelection, computerSelection);
+                    let playerWinsMessageR4 = `You win, ${playerSelection} beats ${computerSelection} `;
+                    let playerLoseMessageR4 = `You loose, ${computerSelection} beats ${playerSelection} `;
+                    console.log(`fourth round results ${gameResultsRoundFour} at round ${state}`);
+
+                    if(gameResultsRoundFour == playerLoseMessageR4)
+                    {
+                        computerPoints += 1;
+                        console.log(`computerPoints are ${computerPoints}`);
+                        state = lastRound;
+                    }
+                    else if(gameResultsRoundFour == playerWinsMessageR4)
+                    {
+                        playerPoints += 1;
+                        console.log(`playerPoints are ${playerPoints}`);
+                        state = lastRound;
+                    }
+                    else
+                    {
+                        state = fourthRound;
+                    }
+                }
+                else if(gameLockFourthRound == on)
+                {
+                    alert('Wrong Input, Please try again');
+                    state = fourthRound;
+                } 
                 break;
             case lastRound:
-                playerSelection = window.prompt("This is a rock, paper, scissors game");
+                playerSelection = window.prompt("This is a rock, paper, scissors game - Round 5");
                 playerSelection = playerSelection.toLowerCase();
-                computerSelection = computerPlay();
-                let gameResultsRoundFive = playRound(playerSelection, computerSelection);
-                let playerWinsMessageR5 = `You win, ${playerSelection} beats ${computerSelection} `;
-                let playerLoseMessageR5 = `You loose, ${computerSelection} beats ${playerSelection} `;
-                console.log(`fifth round results ${gameResultsRoundFive} at round ${state}`);
-
-                if(gameResultsRoundFive == playerLoseMessageR5)
+                
+                let gameLockLastRound = 1;
+                if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
-                    computerPoints += 1;
-                    console.log(`computerPoints are ${computerPoints}`);
-                    state = comparePoints;
-                }
-                else if(gameResultsRoundFive == playerWinsMessageR5)
-                {
-                    playerPoints += 1;
-                    console.log(`playerPoints are ${playerPoints}`);
-                    state = comparePoints;
+                    gameLockLastRound += 1;
+                    console.log(`game lock value ${gameLockLastRound}`);
                 }
                 else
                 {
-                    state = lastRound;
+                    gameLockLastRound -= 1;
+                    console.log(`game lock value ${gameLockLastRound}`);
                 }
+
+                if(gameLockLastRound == off)
+                {
+                    computerSelection = computerPlay();
+                    console.log(`computer has selected ${computerSelection}`);
+                    let gameResultsRoundFive = playRound(playerSelection, computerSelection);
+                    let playerWinsMessageR5 = `You win, ${playerSelection} beats ${computerSelection} `;
+                    let playerLoseMessageR5 = `You loose, ${computerSelection} beats ${playerSelection} `;
+                    console.log(`fifth round results ${gameResultsRoundFive} at round ${state}`);
+
+                    if(gameResultsRoundFive == playerLoseMessageR5)
+                    {
+                        computerPoints += 1;
+                        console.log(`computerPoints are ${computerPoints}`);
+                        state = comparePoints;
+                    }
+                    else if(gameResultsRoundFive == playerWinsMessageR5)
+                    {
+                        playerPoints += 1;
+                        console.log(`playerPoints are ${playerPoints}`);
+                        state = comparePoints;
+                    }
+                    else
+                    {
+                        state = lastRound;
+                    }
+                }
+                else if(gameLockLastRound == on)
+                {
+                    alert('Wrong Input, Please try again');
+                    state = lastRound;
+                } 
                 break;
         }
         if(state == comparePoints)
         {
             if(playerPoints > computerPoints)
             {
-                return 'You have won the game';
+                return 'Game Over: You have won the game';
             }
             else if(computerPoints > playerPoints)
             {
-                return 'You have lost the game';
+                return 'Game Over: You have lost the game';
             }
             else
             {
-                return 'repeat the game';
+                return 'Game Over: It\'s a Tie';
             }
         }
     }  
