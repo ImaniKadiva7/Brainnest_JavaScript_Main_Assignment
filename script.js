@@ -68,6 +68,7 @@ function game()
         {
             case firstRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 1");
+                console.log(`You have selected ${playerSelection}`);
                 playerSelection = playerSelection.toLowerCase();
 
                 let gameLockFirstRound = 1;
@@ -116,6 +117,7 @@ function game()
 
             case secondRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 2");
+                console.log(`You have selected ${playerSelection}`);
                 playerSelection = playerSelection.toLowerCase();
                 
                 let gameLockSecondRound = 1;
@@ -164,6 +166,7 @@ function game()
                 break;
             case thirdRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 3");
+                console.log(`You have selected ${playerSelection}`);
                 playerSelection = playerSelection.toLowerCase();
                 
                 let gameLockThirdRound = 1;
@@ -212,6 +215,7 @@ function game()
                 break;
             case fourthRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 4");
+                console.log(`You have selected ${playerSelection}`);
                 playerSelection = playerSelection.toLowerCase();
                 
                 let gameLockFourthRound = 1;
@@ -260,6 +264,7 @@ function game()
                 break;
             case lastRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 5");
+                console.log(`You have selected ${playerSelection}`);
                 playerSelection = playerSelection.toLowerCase();
                 
                 let gameLockLastRound = 1;
