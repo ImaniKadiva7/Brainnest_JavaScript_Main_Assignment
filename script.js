@@ -75,12 +75,10 @@ function game()
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
                     gameLockFirstRound += 1;
-                    console.log(`game lock value ${gameLockFirstRound}`);
                 }
                 else
                 {
                     gameLockFirstRound -= 1;
-                    console.log(`game lock value ${gameLockFirstRound}`);
                 }
 
                 if(gameLockFirstRound == off)
@@ -124,12 +122,10 @@ function game()
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
                     gameLockSecondRound += 1;
-                    console.log(`game lock value ${gameLockSecondRound}`);
                 }
                 else
                 {
                     gameLockSecondRound -= 1;
-                    console.log(`game lock value ${gameLockSecondRound}`);
                 }
 
                 if(gameLockSecondRound == off)
@@ -173,12 +169,10 @@ function game()
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
                     gameLockThirdRound += 1;
-                    console.log(`game lock value ${gameLockThirdRound}`);
                 }
                 else
                 {
                     gameLockThirdRound -= 1;
-                    console.log(`game lock value ${gameLockThirdRound}`);
                 }
 
                 if(gameLockThirdRound == off)
@@ -222,12 +216,10 @@ function game()
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
                     gameLockFourthRound += 1;
-                    console.log(`game lock value ${gameLockFourthRound}`);
                 }
                 else
                 {
                     gameLockFourthRound -= 1;
-                    console.log(`game lock value ${gameLockFourthRound}`);
                 }
 
                 if(gameLockFourthRound == off)
@@ -271,12 +263,10 @@ function game()
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
                 {
                     gameLockLastRound += 1;
-                    console.log(`game lock value ${gameLockLastRound}`);
                 }
                 else
                 {
                     gameLockLastRound -= 1;
-                    console.log(`game lock value ${gameLockLastRound}`);
                 }
 
                 if(gameLockLastRound == off)
