@@ -69,7 +69,7 @@ function game()
             case firstRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 1");
                 console.log(`You have selected ${playerSelection}`);
-                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection.toLowerCase().trim();
 
                 let gameLockFirstRound = 1;
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
@@ -116,7 +116,7 @@ function game()
             case secondRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 2");
                 console.log(`You have selected ${playerSelection}`);
-                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection.toLowerCase().trim();
                 
                 let gameLockSecondRound = 1;
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
@@ -163,7 +163,7 @@ function game()
             case thirdRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 3");
                 console.log(`You have selected ${playerSelection}`);
-                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection.toLowerCase().trim();
                 
                 let gameLockThirdRound = 1;
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
@@ -210,7 +210,7 @@ function game()
             case fourthRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 4");
                 console.log(`You have selected ${playerSelection}`);
-                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection.toLowerCase().trim();
                 
                 let gameLockFourthRound = 1;
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
@@ -257,7 +257,7 @@ function game()
             case lastRound:
                 playerSelection = window.prompt("This is a rock, paper, scissors game - Round 5");
                 console.log(`You have selected ${playerSelection}`);
-                playerSelection = playerSelection.toLowerCase();
+                playerSelection = playerSelection.toLowerCase().trim();
                 
                 let gameLockLastRound = 1;
                 if((playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
