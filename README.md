@@ -1,0 +1,2 @@
+# Brainnest_JavaScript_Main_Assignment
+ROCK, PAPER AND SCISSORS JAVASCRIPT GAME WITH HTML AND CSS 
